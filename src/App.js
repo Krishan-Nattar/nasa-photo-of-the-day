@@ -10,20 +10,16 @@ function App() {
   const [hdurl, setHdurl] = useState();
   const [url, setUrl] = useState();
   const [explanation, setExplanation] = useState();
-  const [selectDate, setSelectDate] = useState();
+  const [today, setToday] = useState(new Date);
+  const [selectDate, setSelectDate] = useState(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`);
 
   // const axios = require('axios');
 
   useEffect(() => {
-    console.log("Hello from the effect hook!");
-    let today = new Date;
-    
-    console.log(today.getFullYear()); //Year YYYY
-    console.log(today.getMonth()+1); //Month MM
-    console.log(today.getDate()); //day of the month DD
-    
+    console.log(selectDate);
+
     // axios
-    //   .get("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY")
+    //   .get(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=${selectDate}`)
     //   .then(function(response) {
     //     // handle success
     //     console.log(response);
@@ -39,6 +35,23 @@ function App() {
     //     console.log(error);
     //   });
   }, [selectDate]);
+
+  function createDates(){
+    let current = new Date;
+    let dateString = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
+    // console.log(dateString);
+    let year = current.getFullYear();
+    let month = current.getMonth()+1;
+    let day = current.getDate();
+console.log(year,month,day);
+
+    
+    // console.log(today.getFullYear()); //Year YYYY
+    // console.log(today.getMonth()+1); //Month MM
+    // console.log(today.getDate()); //day of the month DD
+  }
+
+  createDates();
 
   function handleSelectDate(){
     let d = document.getElementById("select_id");
