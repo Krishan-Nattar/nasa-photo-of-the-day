@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import Header from './components/Header';
 import axios from "axios";
+import Main from './components/Main';
+import Footer from './components/Footer';
 
 function App() {
   const [title, setTitle] = useState();
@@ -13,7 +16,7 @@ function App() {
   );
 
   useEffect(() => {
-    console.log(selectDate);
+    
 
     // axios
     //   .get(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=${selectDate}`)
@@ -31,6 +34,7 @@ function App() {
     //     // handle error
     //     console.log(error);
     //   });
+    // console.log(selectDate);
   }, [selectDate]);
   let dateArray = [];
   function createDates() {
@@ -42,7 +46,7 @@ function App() {
     let day = current.getDate();
 
     dateArray.push(dateString);
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 25; i++) {
       for (let i = 0; i < 31; i++) {
         if (day > 1) {
           day--;
@@ -130,24 +134,11 @@ function App() {
     let d = document.getElementById("select_id");
     setSelectDate(d.value);
   }
-
   return (
     <div className="App">
-      <select onChange={handleSelectDate} id="select_id">
-        {dateArray.map((item, index) => {
-          return (
-            <option value={item} key={index}>
-              {item}
-            </option>
-          );
-        })}
-      </select>
-      <h1>{title}</h1>
-      <p>
-        {console.log("rendered")}
-        <img className="image" src={url} />
-        {explanation}
-      </p>
+      <Header handleSelectDate={handleSelectDate} dateArray={dateArray} />
+      <Main title={title} explanation={explanation} url={url} />
+      <Footer />
     </div>
   );
 }
