@@ -4,6 +4,8 @@ import Header from './components/Header';
 import axios from "axios";
 import Main from './components/Main';
 import Footer from './components/Footer';
+import { Grid, Form, Input, TextArea, Button, Select } from "semantic-ui-react";
+import 'semantic-ui-css/semantic.min.css'
 
 function App() {
   const [title, setTitle] = useState();
@@ -18,27 +20,28 @@ function App() {
   useEffect(() => {
     
 
-    // axios
-    //   .get(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=${selectDate}`)
-    //   .then(function(response) {
-    //     // handle success
-    //     console.log(response);
+    axios
+      .get(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=${selectDate}`)
+      .then(function(response) {
+        // handle success
+        // console.log(response);
 
-    //     setTitle(response.data.title);
+        setTitle(response.data.title);
 
-    //     setUrl(response.data.url);
-    //     setExplanation(response.data.explanation);
+        setUrl(response.data.url);
+        setExplanation(response.data.explanation);
 
-    //   })
-    //   .catch(function(error) {
-    //     // handle error
-    //     console.log(error);
-    //   });
-    // console.log(selectDate);
+      })
+      .catch(function(error) {
+        // handle error
+        console.log(error);
+      });
+    console.log(selectDate);
 
     // return ()=>console.log("effect hook cleaned up");
   }, [selectDate]);
   let dateArray = [];
+  let dropdownOptions = [];
   function createDates() {
     let current = new Date();
     let dateString = `${current.getFullYear()}-${current.getMonth() +
@@ -126,19 +129,27 @@ function App() {
         year--;
       }
     }
-
-    return dateArray;
+    
+    dateArray.forEach((item, index, array)=>{
+      let object = {
+        key:index,
+        value:item,
+        text:item
+      }
+      dropdownOptions.push(object);
+    });
+    return dropdownOptions;
   }
 
   createDates();
 
   function handleSelectDate() {
-    let d = document.getElementById("select_id");
-    setSelectDate(d.value);
+    let d = document.querySelector("#select_id .text");
+    setSelectDate(d.innerText);
   }
   return (
     <div className="App">
-      <Header handleSelectDate={handleSelectDate} dateArray={dateArray} />
+      <Header handleSelectDate={handleSelectDate} dateArray={dropdownOptions} />
       <Main title={title} explanation={explanation} url={url} />
       <Footer />
     </div>

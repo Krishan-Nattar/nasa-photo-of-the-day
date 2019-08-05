@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .App-logo {
@@ -27,11 +33,21 @@
 }
 
 .header{
-  background-color: lightblue;
+  background-color: lightblue !important;
+  /* width: 100% !important; */
+  /* width: 70%; */
+  /* margin: 0 auto; */
+  /* margin-left: 200px; */
+  /* padding-left: 200px; */
+  /* align-self: center; */
 }
 
 .main{
-  background-color: lightsteelblue;
+  /* background-color: lightsteelblue; */
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
 }
 
 @keyframes App-logo-spin {
@@ -41,4 +57,20 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+#select_id{
+  /* max-width: 500px; */
+  /* width: 100%; */
+  margin: 10px auto;
+}
+*{
+  /* border: 1px solid red; */
+}
+/* Segment{
+  height: 10px;
+} */
+
+.footer{
+  margin: 20px auto;
 }
