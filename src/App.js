@@ -35,6 +35,8 @@ function App() {
     //     console.log(error);
     //   });
     // console.log(selectDate);
+
+    // return ()=>console.log("effect hook cleaned up");
   }, [selectDate]);
   let dateArray = [];
   function createDates() {
