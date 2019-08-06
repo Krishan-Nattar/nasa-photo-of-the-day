@@ -1,29 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "../App.css";
-import { Select, Button, Icon, Segment } from "semantic-ui-react";
+import { Select, Segment} from "semantic-ui-react";
+import { makeStyles } from '@material-ui/core/styles';
 import "semantic-ui-css/semantic.min.css";
+import {StyledH1} from './Styled';
+import Fab from '@material-ui/core/Fab';
+
+const useStyles = makeStyles(theme => ({
+  fab: {
+    margin: theme.spacing(1),
+  },
+  extendedIcon: {
+    marginRight: theme.spacing(1),
+  },
+}));
 
 function Header(props) {
+  const classes= useStyles();
 
   return (
     <div>
       <Segment className="header">
-        <h1>NASA Photo Of The Day</h1>
-        <p>Select Date:</p>
-      <Select placeholder='Select Date' onChange={props.handleSelectDate} options={props.dateArray} id="select_id" />
+        <StyledH1>Nasa Photo Of The Day</StyledH1>
+      <Select placeholder='Select Date' options={props.dateArray} id="select_id" />
+      <br />
+    <Fab variant="extended" aria-label="delete" className={classes.fab} onClick={props.handleSelectDate}>
+        Show Me!
+      </Fab>
+
       </Segment>
-      
-      {/* <Select placeholder='Select your country' options={countryOptions} /> */}
-      
-      {/* <select onChange={props.handleSelectDate} id="select_id">
-        {props.dateArray.map((item, index) => {
-          return (
-            <option value={item} key={index}>
-              {item}
-            </option>
-          );
-        })}
-      </select> */}
     </div>
   );
 }

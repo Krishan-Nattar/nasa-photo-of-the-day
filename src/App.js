@@ -4,8 +4,9 @@ import Header from './components/Header';
 import axios from "axios";
 import Main from './components/Main';
 import Footer from './components/Footer';
-import { Grid, Form, Input, TextArea, Button, Select } from "semantic-ui-react";
+// import { Grid, Form, Input, TextArea, Button, Select } from "semantic-ui-react";
 import 'semantic-ui-css/semantic.min.css'
+// import styled from 'styled-components';
 
 function App() {
   const [title, setTitle] = useState();
@@ -21,7 +22,7 @@ function App() {
     
 
     axios
-      .get(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=${selectDate}`)
+      .get(`https://api.nasa.gov/planetary/apod?api_key=4dJPh8SSC1hefrR5bStIr4AOlzmS7sz4Vni4Zbbg&date=${selectDate}`)
       .then(function(response) {
         // handle success
         // console.log(response);
@@ -38,7 +39,6 @@ function App() {
       });
     console.log(selectDate);
 
-    // return ()=>console.log("effect hook cleaned up");
   }, [selectDate]);
   let dateArray = [];
   let dropdownOptions = [];

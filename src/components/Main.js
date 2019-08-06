@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "../App.css";
 import { Image, Segment } from 'semantic-ui-react'
 import "semantic-ui-css/semantic.min.css";
@@ -8,7 +8,6 @@ function Main(props){
         <div>
             <Segment className="main">
                 <h1>{props.title}</h1>
-                {/* <img className="image" src={props.url} /> */}
                 <Image src={props.url} />
                 <p>{props.explanation}</p>
             </Segment>
