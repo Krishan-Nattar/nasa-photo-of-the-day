@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import Header from './components/Header';
+import Header from "./components/Header";
 import axios from "axios";
-import Main from './components/Main';
-import Footer from './components/Footer';
+import Main from "./components/Main";
+import Footer from "./components/Footer";
 // import { Grid, Form, Input, TextArea, Button, Select } from "semantic-ui-react";
-import 'semantic-ui-css/semantic.min.css'
+import "semantic-ui-css/semantic.min.css";
 // import styled from 'styled-components';
 
 function App() {
@@ -19,10 +19,10 @@ function App() {
   );
 
   useEffect(() => {
-    
-
     axios
-      .get(`https://api.nasa.gov/planetary/apod?api_key=4dJPh8SSC1hefrR5bStIr4AOlzmS7sz4Vni4Zbbg&date=${selectDate}`)
+      .get(
+        `https://api.nasa.gov/planetary/apod?api_key=4dJPh8SSC1hefrR5bStIr4AOlzmS7sz4Vni4Zbbg&date=${selectDate}`
+      )
       .then(function(response) {
         // handle success
         // console.log(response);
@@ -31,14 +31,12 @@ function App() {
 
         setUrl(response.data.url);
         setExplanation(response.data.explanation);
-
       })
       .catch(function(error) {
         // handle error
         console.log(error);
       });
     console.log(selectDate);
-
   }, [selectDate]);
   let dateArray = [];
   let dropdownOptions = [];
@@ -129,13 +127,13 @@ function App() {
         year--;
       }
     }
-    
-    dateArray.forEach((item, index, array)=>{
+
+    dateArray.forEach((item, index, array) => {
       let object = {
-        key:index,
-        value:item,
-        text:item
-      }
+        key: index,
+        value: item,
+        text: item
+      };
       dropdownOptions.push(object);
     });
     return dropdownOptions;
