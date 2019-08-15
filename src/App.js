@@ -174,8 +174,10 @@ function App() {
   return (
     <div className="App">
       <div className="toprow">
-      <Header handleSelectDate={handleSelectDate} dateArray={dropdownOptions} />
+      <Header handleSelectDate={handleSelectDate} dateArray={dropdownOptions}>
       <DatePicker selectedDate={datePicker} handleDateChange={handleDateChange} />
+      </Header>
+      
       </div>
       <Main title={title} explanation={explanation} url={url} />
       <Footer />

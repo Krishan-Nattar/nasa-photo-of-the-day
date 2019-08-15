@@ -41,6 +41,10 @@ i.arrow.down.icon{
   background-color: #0b3d91 !important;
 }
 
+div#root{
+  background: url('/images/space.jpg');
+}
+
 .main{
   display:flex;
   flex-direction: column;

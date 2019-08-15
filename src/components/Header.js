@@ -34,11 +34,12 @@ function Header(props) {
     <div>
       <Segment className="header">
         <StyledH1>Nasa Photo Of The Day</StyledH1>
-      <Select placeholder='Select Date' options={props.dateArray} id="select_id" />
+      {/* <Select placeholder='Select Date' options={props.dateArray} id="select_id" />
       <br />
     <Fab variant="extended" aria-label="delete" className={classes.fab} onClick={props.handleSelectDate}>
         Show Me!
-      </Fab><br /><br />
+      </Fab><br /><br /> */}
+      {props.children}
       {/* <DatePicker
         selected={todayDate}
         onChange={handleChange}
