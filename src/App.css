@@ -1,8 +1,17 @@
 .App {
   text-align: center;
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.toprow{
+  display:flex;
 }
 
-.App-logo {
+/* .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
   pointer-events: none;
@@ -17,17 +26,63 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+} */
+i.arrow.down.icon{
+  margin:0 !important;
 }
-
 .App-link {
   color: #61dafb;
 }
+.image{
+  width:50%;
+}
 
-@keyframes App-logo-spin {
+.appbar{
+  display:flex;
+  width: 100%;
+  justify-content: space-around !important;
+  align-content: center;
+  align-items: center;
+  /* border: 1px solid red; */
+  margin: 0 auto !important;
+  /* margin-left: 200px ! important; */
+}
+div.ui.segment.datepicker{
+  /* background-color: none; */
+  background: none;
+  /* border:none; */
+}
+
+.header{
+  background-color: #0b3d91 !important;
+}
+
+div#root{
+  background: url('/images/space.jpg');
+}
+
+.main{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+
+/* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
+} */
+
+#select_id{
+
+  margin: 10px auto;
+}
+
+
+.footer{
+  margin: 20px auto;
 }
