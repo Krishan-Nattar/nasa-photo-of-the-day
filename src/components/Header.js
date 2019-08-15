@@ -4,8 +4,8 @@ import { Select, Segment} from "semantic-ui-react";
 import { makeStyles } from '@material-ui/core/styles';
 import "semantic-ui-css/semantic.min.css";
 import {StyledH1} from './Styled';
-import Fab from '@material-ui/core/Fab';
-import DatePicker from 'react-datepicker';
+// import Fab from '@material-ui/core/Fab';
+// import DatePicker from 'react-datepicker';
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -29,10 +29,13 @@ const handleChange=(date)=> {
 
 function Header(props) {
   const classes= useStyles();
+  
+
 
   return (
     <div>
       <Segment className="header">
+      
         <StyledH1>Nasa Photo Of The Day</StyledH1>
       {/* <Select placeholder='Select Date' options={props.dateArray} id="select_id" />
       <br />

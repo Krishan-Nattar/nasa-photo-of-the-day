@@ -37,6 +37,22 @@ i.arrow.down.icon{
   width:50%;
 }
 
+.appbar{
+  display:flex;
+  width: 100%;
+  justify-content: space-around !important;
+  align-content: center;
+  align-items: center;
+  /* border: 1px solid red; */
+  margin: 0 auto !important;
+  /* margin-left: 200px ! important; */
+}
+div.ui.segment.datepicker{
+  /* background-color: none; */
+  background: none;
+  /* border:none; */
+}
+
 .header{
   background-color: #0b3d91 !important;
 }

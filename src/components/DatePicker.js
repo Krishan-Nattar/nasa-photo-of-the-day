@@ -21,21 +21,21 @@ import "react-datepicker/dist/react-datepicker.css";
 const todayDate = new Date();
 
 
-function Header(props) {
+function DatePickerComponent(props) {
 //   const classes= useStyles();
 
   return (
     <div>
-      <Segment className="header">
+      {/* <Segment className="datepicker"> */}
 
       <DatePicker
         selected={props.selectedDate}
         onChange={props.handleDateChange}
       />
-      </Segment>
+      {/* </Segment> */}
      
     </div>
   );
 }
 
-export default Header;
+export default DatePickerComponent;

@@ -7,6 +7,15 @@ import Footer from "./components/Footer";
 import { Segment} from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import DatePicker from './components/DatePicker';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+
+
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+
 
 function App() {
   const [title, setTitle] = useState();
@@ -14,6 +23,7 @@ function App() {
   const [url, setUrl] = useState();
   const [explanation, setExplanation] = useState();
   const [today, setToday] = useState(new Date());
+  const [anchorEl, setAnchorEl] = React.useState(null);
   const [selectDate, setSelectDate] = useState(
   
 
@@ -21,6 +31,12 @@ function App() {
     `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
   );
   const [datePicker, setDatePicker] = useState(new Date());
+
+  const useStyles = makeStyles({
+    root: {
+      flexGrow: 1,
+    },
+  });
   
   // useEffect(() => {
   //   axios
@@ -58,6 +74,14 @@ function App() {
         console.log(error);
       });
   }, [datePicker]);
+
+  function handleClick(event) {
+    setAnchorEl(event.currentTarget);
+  }
+
+  function handleClose() {
+    setAnchorEl(null);
+  }
 
 
   let dateArray = [];
@@ -171,12 +195,33 @@ function App() {
     let d = document.querySelector("#select_id .text");
     setSelectDate(d.innerText);
   }
+  const classes = useStyles();
   return (
     <div className="App">
+      {/* <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItem onClick={handleClose}>Logout</MenuItem>
+      </Menu> */}
+
+<AppBar position="static" color="default">
+        <Toolbar>
+          <Typography variant="h6" color="inherit" className="appbar">
+            Nasa Photo Of The Day
+            <DatePicker selectedDate={datePicker} handleDateChange={handleDateChange} />
+          </Typography>
+        </Toolbar>
+      </AppBar>
       <div className="toprow">
-      <Header handleSelectDate={handleSelectDate} dateArray={dropdownOptions}>
-      <DatePicker selectedDate={datePicker} handleDateChange={handleDateChange} />
-      </Header>
+      {/* <Header handleSelectDate={handleSelectDate} dateArray={dropdownOptions}> */}
+      
+      {/* </Header> */}
       
       </div>
       <Main title={title} explanation={explanation} url={url} />
