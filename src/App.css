@@ -7,6 +7,9 @@
   max-width: 600px;
   margin: 0 auto;
 }
+.toprow{
+  display:flex;
+}
 
 /* .App-logo {
   animation: App-logo-spin infinite 20s linear;

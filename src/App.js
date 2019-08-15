@@ -4,9 +4,9 @@ import Header from "./components/Header";
 import axios from "axios";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
-// import { Grid, Form, Input, TextArea, Button, Select } from "semantic-ui-react";
+import { Segment} from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
-// import styled from 'styled-components';
+import DatePicker from './components/DatePicker';
 
 function App() {
   const [title, setTitle] = useState();
@@ -15,20 +15,41 @@ function App() {
   const [explanation, setExplanation] = useState();
   const [today, setToday] = useState(new Date());
   const [selectDate, setSelectDate] = useState(
+  
+
+
     `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
   );
+  const [datePicker, setDatePicker] = useState(new Date());
+  
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       `https://api.nasa.gov/planetary/apod?api_key=4dJPh8SSC1hefrR5bStIr4AOlzmS7sz4Vni4Zbbg&date=${selectDate}`
+  //     )
+  //     .then(function(response) {
+
+  //       setTitle(response.data.title);
+  //       setUrl(response.data.url);
+  //       setExplanation(response.data.explanation);
+  //     })
+  //     .catch(function(error) {
+  //       // handle error
+  //       console.log(error);
+  //     });
+  // //  console.log(selectDate);
+  // }, [selectDate]);
 
   useEffect(() => {
+    const dateString2 = `${datePicker.getFullYear()}-${datePicker.getMonth() + 1}-${datePicker.getDate()}`;
+    console.log(dateString2);
     axios
       .get(
-        `https://api.nasa.gov/planetary/apod?api_key=4dJPh8SSC1hefrR5bStIr4AOlzmS7sz4Vni4Zbbg&date=${selectDate}`
+        `https://api.nasa.gov/planetary/apod?api_key=4dJPh8SSC1hefrR5bStIr4AOlzmS7sz4Vni4Zbbg&date=${dateString2}`
       )
       .then(function(response) {
-        // handle success
-        // console.log(response);
 
         setTitle(response.data.title);
-
         setUrl(response.data.url);
         setExplanation(response.data.explanation);
       })
@@ -36,8 +57,9 @@ function App() {
         // handle error
         console.log(error);
       });
-    console.log(selectDate);
-  }, [selectDate]);
+  }, [datePicker]);
+
+
   let dateArray = [];
   let dropdownOptions = [];
   function createDates() {
@@ -138,6 +160,10 @@ function App() {
     });
     return dropdownOptions;
   }
+  const handleDateChange=(date)=> {
+    setDatePicker(date);
+    }
+    
 
   createDates();
 
@@ -147,7 +173,10 @@ function App() {
   }
   return (
     <div className="App">
+      <div className="toprow">
       <Header handleSelectDate={handleSelectDate} dateArray={dropdownOptions} />
+      <DatePicker selectedDate={datePicker} handleDateChange={handleDateChange} />
+      </div>
       <Main title={title} explanation={explanation} url={url} />
       <Footer />
     </div>
